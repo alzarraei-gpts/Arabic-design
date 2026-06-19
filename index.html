@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>باقة التصميم الذكي | واجهة نيون هولوغرافية</title>
 <meta name="description" content="واجهة ويب داكنة بنمط نيون هولوغرافي لعرض جميع نماذج باقة التصميم الذكي مع بحث وتصفية وروابط تشغيل ChatGPT وGemini." />
-<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=VCBnQdEpEF6DkCDx5gqtreyN8lnBIWs3CDwzMvuDjM4lhD4_E8UYo4NU16oQ1c8FtJtWEVmQeH19gQQ8d4atdoVNttZeBbyAu8Dq6XCvMnFxxgqHHnCwbPnBBNa5glBWJab5WGUxAvlKzgscNplCGIlSm2dNz-IVlpi3kZWdCBbwUBOr3Nn_zy_dgUk1oaevtkWaeKaWwQXvzRSgbKhykAGUwolTqF18ZdYD0f21JhI_uUzCB_zpign0BaFuRTAPVQIe1ibbizO1lb8MLLSiaQ" charset="UTF-8"></script><style>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=M1Fc4M4Kylzgy44_iU5_p3u3aGxbbzqubaVrhkB9pKk3TxnBbp_GW6XQ_9e7DjOcBAw2608TKglz-ZIm8p_3lcq973gGtmjEgdlDSpTt9jc93l905c9gELnYdK1C-pFiZjG4aqcztc1bxG56A-3N8fHENYr_weUis-Tqm47IDA4XSa1cdGu2XfhBepteXO37Uz2Y8iR27OxgI8GLiZP3gmWPM-8s_UcLH6s4W81Mn1RRAenNW_5zKDDl-GIzn_lOAQnbH02fY1BaB1I2YXwlpA" charset="UTF-8"></script><style>
 :root{
   --bg:#030603;
   --bg-2:#071107;
@@ -380,8 +380,16 @@ svg{display:block}
   display:grid;
   gap:8px;
   max-height:370px;
-  overflow:auto;
-  padding-left:5px;
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding-left:0;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.category-list::-webkit-scrollbar{
+  width:0;
+  height:0;
+  display:none;
 }
 .category-btn{
   border:1px solid rgba(255,255,255,.09);
@@ -881,6 +889,133 @@ body{
   }
 }
 
+
+
+/* === تحديث نهائي: قلب أزرار ChatGPT / Gemini وتنظيم شريط الفيديو والتواصل === */
+.card-actions{
+  direction:rtl !important;
+}
+.card-actions .platform-right{
+  grid-column:1 !important;
+  direction:rtl !important;
+}
+.card-actions .platform-left{
+  grid-column:2 !important;
+  direction:ltr !important;
+}
+.card-actions .platform-right svg{
+  order:-1 !important;
+}
+.card-actions .platform-left svg{
+  order:-1 !important;
+}
+.card-actions .platform-right span,
+.card-actions .platform-left span{
+  unicode-bidi:isolate !important;
+}
+.modal-foot .platform-right{direction:rtl !important;}
+.modal-foot .platform-left{direction:ltr !important;}
+.modal-foot .platform-right svg,.modal-foot .platform-left svg{order:-1 !important;}
+
+body{
+  padding-bottom:clamp(138px,13vw,176px) !important;
+}
+.social-bottom-strip{
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom)) !important;
+}
+.social-bottom-inner{
+  width:min(100%,1460px) !important;
+  grid-template-columns:auto minmax(0,1fr) !important;
+  gap:16px !important;
+}
+.social-bottom-title{
+  min-width:178px !important;
+}
+.social-bottom-content{
+  min-width:0;
+  display:grid;
+  gap:8px;
+}
+.social-bottom-group{
+  min-width:0;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:9px;
+  align-items:center;
+  direction:rtl;
+}
+.bottom-group-label{
+  min-width:82px;
+  min-height:34px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  color:#9df22a;
+  background:rgba(118,185,0,.10);
+  border:1px solid rgba(157,242,42,.28);
+  font-weight:1000;
+  font-size:12px;
+  white-space:nowrap;
+}
+.social-bottom-links{
+  min-width:0;
+  justify-content:flex-start !important;
+  padding:2px 1px 4px !important;
+}
+.social-bottom-link{
+  min-height:38px !important;
+  padding:7px 10px !important;
+  border-radius:14px !important;
+}
+.social-bottom-link .social-icon{
+  width:27px !important;
+  height:27px !important;
+  min-width:27px !important;
+  border-radius:10px !important;
+}
+.social-bottom-link svg{
+  width:17px !important;
+  height:17px !important;
+}
+@media(max-width:860px){
+  body{padding-bottom:190px !important;}
+  .social-bottom-inner{grid-template-columns:1fr !important;gap:8px !important;}
+  .social-bottom-title{min-width:0 !important;align-items:center;text-align:center;}
+  .social-bottom-group{grid-template-columns:1fr !important;gap:5px !important;}
+  .bottom-group-label{justify-self:center;min-height:28px;font-size:11px;}
+  .social-bottom-links{justify-content:flex-start !important;}
+}
+
+
+/* === إظهار جميع أزرار تصنيفات النماذج داخل الباقة دون سكرول داخلي === */
+.filter-panel{
+  align-self:start !important;
+  overflow:visible !important;
+}
+.category-list{
+  max-height:none !important;
+  height:auto !important;
+  overflow:visible !important;
+  padding-left:0 !important;
+}
+.category-list::-webkit-scrollbar{
+  width:0 !important;
+  height:0 !important;
+  display:none !important;
+}
+@media(max-width:820px){
+  .category-list{
+    max-height:none !important;
+    overflow:visible !important;
+  }
+}
+
+/* === انتقال تلقائي إلى أعلى قائمة النتائج اليسرى عند اختيار التصنيف === */
+.results-area{
+  scroll-margin-top:18px !important;
+}
+
 </style>
 </head>
 <body>
@@ -975,7 +1110,7 @@ body{
     </header>
     <div class="modal-body" id="modalBody"></div>
     <footer class="modal-foot">
-      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" type="button" id="copyTool">نسخ الوصف</button><a class="btn ghost" id="modalChatGPT" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer">تشغيل ChatGPT</a><a class="btn ghost" id="modalGemini" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer">تشغيل Gemini</a></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" type="button" id="copyTool">نسخ الوصف</button><a class="btn ghost platform-btn platform-right" id="modalChatGPT" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer"><span>تشغيل ChatGPT</span></a><a class="btn ghost platform-btn platform-left" id="modalGemini" href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer"><span>تشغيل Gemini</span></a></div>
       <button class="btn" id="closeModal2" type="button">إغلاق</button>
     </footer>
   </article>
@@ -1615,10 +1750,21 @@ function filtered(){
   return list;
 }
 function categoryName(key){return (categories.find(c=>c.key===key)||{}).name||key}
+function scrollResultsToTop(){
+  const target=document.querySelector('.results-area');
+  if(!target) return;
+  const prefersReduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  target.scrollIntoView({behavior:prefersReduced?'auto':'smooth',block:'start',inline:'nearest'});
+  if(els.cards) els.cards.scrollTop=0;
+}
 function renderCategories(){
   const counts=categoryCounts();
   els.categories.innerHTML=categories.map(c=>`<button class="category-btn ${state.category===c.key?'active':''}" type="button" data-category="${c.key}">${svgIcon(c.icon)}<b>${c.name}</b><span class="count">${counts[c.key]||0}</span></button>`).join('');
-  els.categories.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{state.category=btn.dataset.category;render()}));
+  els.categories.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',()=>{
+    state.category=btn.dataset.category;
+    render();
+    requestAnimationFrame(()=>requestAnimationFrame(scrollResultsToTop));
+  }));
 }
 function renderCards(){
   const list=filtered();
@@ -1633,8 +1779,8 @@ function renderCards(){
     <p class="card-desc">${t.desc}</p>
     <div class="card-actions">
       <button class="btn primary details" type="button" data-open="${tools.indexOf(t)}">عرض التفاصيل والتشغيل</button>
-      ${t.gemini ? `<a class="btn ghost platform-btn" href="${t.gemini}" target="_blank" rel="noopener noreferrer" aria-label="تشغيل ${t.title} على Gemini">${svgIcon('star')}<span>Gemini</span></a>` : `<span class="btn ghost platform-btn disabled-link" aria-disabled="true">${svgIcon('star')}<span>Gemini غير متاح</span></span>`}
-      ${t.chatgpt ? `<a class="btn ghost platform-btn" href="${t.chatgpt}" target="_blank" rel="noopener noreferrer" aria-label="تشغيل ${t.title} على ChatGPT">${svgIcon('brain')}<span>ChatGPT</span></a>` : `<span class="btn ghost platform-btn disabled-link" aria-disabled="true">${svgIcon('brain')}<span>ChatGPT غير متاح</span></span>`}
+      ${t.chatgpt ? `<a class="btn ghost platform-btn platform-right" href="${t.chatgpt}" target="_blank" rel="noopener noreferrer" aria-label="تشغيل ${t.title} على ChatGPT">${svgIcon('brain')}<span>ChatGPT</span></a>` : `<span class="btn ghost platform-btn platform-right disabled-link" aria-disabled="true">${svgIcon('brain')}<span>ChatGPT غير متاح</span></span>`}
+      ${t.gemini ? `<a class="btn ghost platform-btn platform-left" href="${t.gemini}" target="_blank" rel="noopener noreferrer" aria-label="تشغيل ${t.title} على Gemini">${svgIcon('star')}<span>Gemini</span></a>` : `<span class="btn ghost platform-btn platform-left disabled-link" aria-disabled="true">${svgIcon('star')}<span>Gemini غير متاح</span></span>`}
     </div>
   </article>`).join('');
   els.cards.querySelectorAll('.tool-card').forEach(card=>card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mx',`${e.clientX-r.left}px`);card.style.setProperty('--my',`${e.clientY-r.top}px`)}));
@@ -1700,13 +1846,38 @@ document.getElementById('categoryCountStat').textContent=categories.length;
 render();initParticles();
 </script>
 
-<footer class="social-bottom-strip" aria-label="روابط وسائل التواصل الاجتماعي">
+
+<footer class="social-bottom-strip" aria-label="روابط الفيديو ووسائل التواصل الاجتماعي">
   <div class="social-bottom-inner">
     <div class="social-bottom-title">
-      <strong>روابط التواصل</strong>
-      <span>تابع النماذج العربية الذكية عبر المنصات</span>
+      <strong>روابط الفيديو والتواصل</strong>
+      <span>مواد الشرح والمنصات الرسمية للنماذج العربية الذكية</span>
     </div>
-    <nav class="social-bottom-links" aria-label="منصات التواصل">
+    <div class="social-bottom-content">
+      <section class="social-bottom-group" aria-label="روابط الفيديو">
+        <span class="bottom-group-label">الفيديوهات</span>
+        <nav class="social-bottom-links" aria-label="روابط الفيديو">
+      <a class="social-bottom-link" href="https://youtu.be/tCf6sZNxcq0?si=zZWAT1DS_D6muDdL" target="_blank" rel="noopener" aria-label="الفيديو 1">
+        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12s0-3.5-.45-5a2.8 2.8 0 0 0-2-2C17.8 4.5 12 4.5 12 4.5s-5.8 0-7.55.5a2.8 2.8 0 0 0-2 2C2 8.5 2 12 2 12s0 3.5.45 5a2.8 2.8 0 0 0 2 2c1.75.5 7.55.5 7.55.5s5.8 0 7.55-.5a2.8 2.8 0 0 0 2-2c.45-1.5.45-5 .45-5Z"/><path d="m10 15 5-3-5-3v6Z"/></svg></span>
+        <span>الفيديو 1</span>
+      </a>
+      <a class="social-bottom-link" href="https://www.youtube.com/watch?v=cB5VyUtnyzY&t=200s" target="_blank" rel="noopener" aria-label="الفيديو 2">
+        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12s0-3.5-.45-5a2.8 2.8 0 0 0-2-2C17.8 4.5 12 4.5 12 4.5s-5.8 0-7.55.5a2.8 2.8 0 0 0-2 2C2 8.5 2 12 2 12s0 3.5.45 5a2.8 2.8 0 0 0 2 2c1.75.5 7.55.5 7.55.5s5.8 0 7.55-.5a2.8 2.8 0 0 0 2-2c.45-1.5.45-5 .45-5Z"/><path d="m10 15 5-3-5-3v6Z"/></svg></span>
+        <span>الفيديو 2</span>
+      </a>
+      <a class="social-bottom-link" href="https://www.youtube.com/watch?v=Gc9mCElTwH0&t=1142s" target="_blank" rel="noopener" aria-label="الفيديو 3 — عادي">
+        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12s0-3.5-.45-5a2.8 2.8 0 0 0-2-2C17.8 4.5 12 4.5 12 4.5s-5.8 0-7.55.5a2.8 2.8 0 0 0-2 2C2 8.5 2 12 2 12s0 3.5.45 5a2.8 2.8 0 0 0 2 2c1.75.5 7.55.5 7.55.5s5.8 0 7.55-.5a2.8 2.8 0 0 0 2-2c.45-1.5.45-5 .45-5Z"/><path d="m10 15 5-3-5-3v6Z"/></svg></span>
+        <span>الفيديو 3 — عادي</span>
+      </a>
+      <a class="social-bottom-link" href="https://www.skool.com/zraiee-3956/classroom/7d7bd75f?md=ed658462309c45d381f2dd74189a982e" target="_blank" rel="noopener" aria-label="الفيديو 3 — عالي">
+        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h11a3 3 0 0 1 0 6H8"/><path d="M8 9h9a3 3 0 0 1 0 6H8"/><path d="M8 15h8"/></svg></span>
+        <span>الفيديو 3 — عالي</span>
+      </a>
+        </nav>
+      </section>
+      <section class="social-bottom-group" aria-label="وسائل التواصل">
+        <span class="bottom-group-label">التواصل</span>
+        <nav class="social-bottom-links" aria-label="وسائل التواصل">
       <a class="social-bottom-link" href="https://www.linkedin.com/in/ArabAIModels" target="_blank" rel="noopener" aria-label="لينكدين">
         <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6Z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></span>
         <span>لينكدين</span>
@@ -1720,11 +1891,11 @@ render();initParticles();
         <span>فيس بوك</span>
       </a>
       <a class="social-bottom-link" href="https://wa.me/966552191598" target="_blank" rel="noopener" aria-label="واتساب">
-        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.8a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.3-4.7A8.5 8.5 0 1 1 20.5 11.8Z"/><path d="M8.7 8.5c.2-.5.5-.6.9-.6h.5c.3 0 .5.1.6.4l.8 1.9c.1.3.1.6-.1.8l-.4.5c-.2.2-.2.4 0 .7.5.9 1.4 1.7 2.4 2.2.3.2.5.1.7-.1l.5-.6c.2-.2.5-.3.8-.2l1.8.9c.3.1.5.4.5.7 0 .7-.5 1.5-1.2 1.8-.6.3-2.7.4-5.4-2.1-2.5-2.3-3.3-4.6-3.2-5.3 0-.4.1-.7.3-1Z"/></svg></span>
+        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.8a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.3-4.7A8.5 8.5 0 1 1 20.5 11.8Z"/><path d="M8.7 8.5c.2-.5.5-.6.9-.6h.5c.3 0 .5.1.6.4l.8 1.9c.1.3.1.6-.1.8l-.4.5c-.2.2-.2.4 0 .7.5.8 1.2 1.5 2 2 .3.2.5.2.7 0l.6-.4c.2-.2.5-.2.8-.1l1.8.8c.3.1.4.4.4.7v.4c0 .4-.2.7-.6.9-.5.2-1.2.3-2.1.1-2.8-.6-5.5-3.3-6.1-6.1-.2-.8-.1-1.5.1-2Z"/></svg></span>
         <span>واتساب</span>
       </a>
       <a class="social-bottom-link" href="https://t.me/ArabAIModels" target="_blank" rel="noopener" aria-label="تليغرام">
-        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4 2-15Z"/><path d="m9 13 7-5-5 7"/></svg></span>
+        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l7 2.5M21 4l-4 17-7-7.5M21 4 10 13.5"/></svg></span>
         <span>تليغرام</span>
       </a>
       <a class="social-bottom-link" href="https://www.instagram.com/ArabAIModels" target="_blank" rel="noopener" aria-label="انستغرام">
@@ -1732,26 +1903,28 @@ render();initParticles();
         <span>انستغرام</span>
       </a>
       <a class="social-bottom-link" href="https://www.tiktok.com/@ArabAIModels" target="_blank" rel="noopener" aria-label="تيك توك">
-        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.2a4.2 4.2 0 1 1-3-4V7.2a7.2 7.2 0 1 0 6 7.1V8.5c1.2.9 2.4 1.3 4 1.4V6.3c-2.2-.2-4.1-1.4-5-3.3h-2Z"/></svg></span>
+        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v10.2a4.2 4.2 0 1 1-4.2-4.2"/><path d="M14 3c.6 3 2.4 5 5 5"/></svg></span>
         <span>تيك توك</span>
       </a>
-      <a class="social-bottom-link" href="mailto:zraieee@gmail.com" target="_blank" rel="noopener" aria-label="البريد">
-        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
+      <a class="social-bottom-link" href="mailto:zraieee@gmail.com" target="_blank" rel="noopener" aria-label="البريد الإلكتروني">
+        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"/><path d="m4 7 8 6 8-6"/></svg></span>
         <span>البريد</span>
       </a>
       <a class="social-bottom-link" href="https://www.paypal.com/paypalme/zraiee" target="_blank" rel="noopener" aria-label="باي بال">
-        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21 11 3h6a4 4 0 0 1 0 8h-4l-.5 3H16a4 4 0 0 0 0-8h-3"/><path d="M7 21h4"/></svg></span>
+        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 20 10 4h6a5 5 0 0 1 1 9h-5l-1 7H7Z"/><path d="M10 16h5a5 5 0 0 0 4.7-3.4"/></svg></span>
         <span>باي بال</span>
       </a>
       <a class="social-bottom-link" href="https://www.skool.com/zraiee-3956/about" target="_blank" rel="noopener" aria-label="سكول">
-        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8 12 4l8 4-8 4-8-4Z"/><path d="M6 10v5c2 2 10 2 12 0v-5"/><path d="M20 8v6"/></svg></span>
+        <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5a2 2 0 0 1 2-2h11a3 3 0 0 1 0 6H8"/><path d="M8 9h9a3 3 0 0 1 0 6H8"/><path d="M8 15h8"/></svg></span>
         <span>سكول</span>
       </a>
       <a class="social-bottom-link" href="https://www.snapchat.com/@arabaimodels" target="_blank" rel="noopener" aria-label="سناب شات">
         <span class="social-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 0 5 2.2 5 5.4v2.2c0 1.4 1.4 2.2 3 2.5-.5 1.3-1.8 1.7-3.1 1.9-.4 1.2-1.5 2-3 2.2-.8 1-2.9 1-3.8 0-1.5-.2-2.6-1-3-2.2-1.3-.2-2.6-.6-3.1-1.9 1.6-.3 3-1.1 3-2.5V8.4C7 5.2 9 3 12 3Z"/></svg></span>
         <span>سناب شات</span>
       </a>
-    </nav>
+        </nav>
+      </section>
+    </div>
   </div>
 </footer>
 
